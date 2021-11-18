@@ -1,1 +1,32 @@
-<h2>Express Auth Boilerplate Home Page</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Review Forum</title>
+</head>
+<body>
+    <h1>Welcome!</h1>
+    <h2>User Suggested Games</h2>
+        <% Game.forEach((el)=>{ %>
+        <ul>
+           <li><%= el %></li>
+        </ul>
+        <% }) %>
+    <h3>Critic Suggested Games</h3>
+    <!-- <ul>
+        <li>Halo Infinite</li>
+        <li>Kena: Bridge of Spirits</li>
+        <li>Mario Party: Superstars</li>
+        <li>Call of Duty: Vanguard</li>
+    </ul> -->
+    <h4>Most anticipated games</h4>
+    <!-- <ul>
+        <li>Elden Ring</li>
+        <li>God of War: Ragnorok</li>
+        <li>Horizon: Forbidden West</li>
+        <li>StarField</li>
+    </ul> -->
+</body>
+</html>

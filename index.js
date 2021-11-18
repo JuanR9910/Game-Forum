@@ -42,8 +42,19 @@ app.use('/auth', require('./controllers/auth'))
 
 // home route
 app.get('/', (req, res)=>{
-    res.render('home')
+        const Game = ['Metroid Dread', 'Guilty Gear Strive', 'Halo Infinite']
+        res.render('index.ejs', {Game: Game})
 })
+
+app.get('/about', (req, res)=> {
+    res.render('about.ejs')
+})
+
+app.get('/review', (req, res)=> {
+    res.render('review.ejs')
+})
+
+
 
 // profile route
 app.get('/profile', isLoggedIn, (req, res)=>{
