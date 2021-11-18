@@ -42,8 +42,7 @@ app.use('/auth', require('./controllers/auth'))
 
 // home route
 app.get('/', (req, res)=>{
-        const Game = ['Metroid Dread', 'Guilty Gear Strive', 'Halo Infinite']
-        res.render('index.ejs', {Game: Game})
+        res.render('home.ejs')
 })
 
 app.get('/about', (req, res)=> {

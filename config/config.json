@@ -1,6 +1,8 @@
 {
   "development": {
-    "database": "express_auth_development",
+    "username": "postgres",
+    "password": "Kai55lx12!",
+    "database": "Project2 Game Review",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
