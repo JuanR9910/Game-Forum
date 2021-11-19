@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const ejsLayouts = require('express-ejs-layouts')
@@ -5,7 +6,7 @@ const session = require('express-session')
 const passport = require('./config/ppConfig')
 const flash = require('connect-flash')
 const isLoggedIn = require('./middleware/isLoggedIn')
-
+const axios = require('axios')
 
 // views (ejs and layouts) set up
 app.set('view engine', 'ejs')
@@ -38,10 +39,10 @@ app.use((req, res, next) => {
 
 // controllers middleware 
 app.use('/auth', require('./controllers/auth'))
-
-
 // home route
 app.get('/', (req, res)=>{
+    axios.get(`GET https://api.rawg.io/api/platforms?key=YOUR_API_KEY
+    GET https://api.rawg.io/api/games?key=YOUR_API_KEY&dates=2019-09-01,2019-09-30&platforms=18,1,7`)
         res.render('home.ejs')
 })
 
