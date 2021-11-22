@@ -11,5 +11,13 @@
     <h2>What Users think</h2>
     <h3>What Critics think</h3>
     <h4>Comments</h4>
+    <ul>
+        <% gameData.forEach((game)=>{ %>
+            <li>
+                <img src="<%= game.background_name %>" alt="">
+                <%= game.name %>
+            </li>
+       <% }) %> 
+       </ul>
 </body>
 </html>

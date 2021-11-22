@@ -14,6 +14,7 @@ app.use(ejsLayouts)
 
 // body parser middelware
 app.use(express.urlencoded({extended:false}))
+app.use(express.static('public'))
 
 // session middleware
 app.use(session({
@@ -44,7 +45,8 @@ app.get('/', (req, res)=>{
     axios.get(`https://api.rawg.io/api/games?key=${process.env.RAWG_API_KEY}`)
     .then(apiRes => {
         console.log('this is apiRes', apiRes.data)
-        res.render('home.ejs')
+        const gameData = apiRes.data.results 
+        res.render('home.ejs', {gameData:gameData})
     })
 })
 
@@ -53,8 +55,12 @@ app.get('/about', (req, res)=> {
 })
 
 app.get('/review', (req, res)=> {
-    res.render('review.ejs')
-})
+    // axios.get(`https://api.rawg.io/api/games?key=${process.env.RAWG_API_KEY}`)
+    // .then(apiRes => {
+    //     console.log('this is apiRes', apiRes.data)
+    //     const gameData = apiRes.data.results 
+        res.render('review.ejs')
+    })
 
 
 
@@ -64,6 +70,6 @@ app.get('/profile', isLoggedIn, (req, res)=>{
 })
 
 
-app.listen(3000, ()=>{
+app.listen(process.env.PORT || 3000, ()=>{
     console.log("auth_practice running on port 3000")
 })

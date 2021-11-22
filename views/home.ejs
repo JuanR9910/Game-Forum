@@ -10,6 +10,17 @@
     <h1>Welcome!</h1>
    
     <h4>Most anticipated games</h4>
-    
+        <ul>
+        <% gameData.forEach((game)=>{ %>
+            <li>
+                <img id= "gameimageA" src="<%= game.background_image %>" alt="">
+                <%= game.name %>
+            </li>
+       <% }) %> 
+       </ul>
+       <form id="form"> 
+        <input type="search">
+        <button>Search</button>
+      </form>
 </body>
 </html>
