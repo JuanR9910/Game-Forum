@@ -11,13 +11,17 @@
     <h2>What Users think</h2>
     <h3>What Critics think</h3>
     <h4>Comments</h4>
-    <ul>
+     <ul>
         <% gameData.forEach((game)=>{ %>
             <li>
-                <img src="<%= game.background_name %>" alt="">
+                <img id= "gameimageA" src="<%= game.background_name %>" alt="">
                 <%= game.name %>
             </li>
        <% }) %> 
-       </ul>
+       </ul> 
+       <form id="form"> 
+        <input type="search">
+        <button>Search</button>
+        </form>
 </body>
 </html>

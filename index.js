@@ -55,13 +55,13 @@ app.get('/about', (req, res)=> {
 })
 
 app.get('/review', (req, res)=> {
-    // axios.get(`https://api.rawg.io/api/games?key=${process.env.RAWG_API_KEY}`)
-    // .then(apiRes => {
-    //     console.log('this is apiRes', apiRes.data)
-    //     const gameData = apiRes.data.results 
+     axios.get(`https://api.rawg.io/api/games?key=${process.env.RAWG_API_KEY}`)
+     .then(apiRes => {
+         console.log('this is apiRes', apiRes.data)
+       const gameData = apiRes.data.results 
         res.render('review.ejs')
     })
-
+})
 
 
 // profile route
