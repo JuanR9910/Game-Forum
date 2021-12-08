@@ -1,6 +1,8 @@
 {
   "development": {
-    "database": "game_review_forum",
+    "username": "postgres",
+    "password": "newpassword",
+    "database": "gameforum2",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },

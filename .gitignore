@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+node_modules
+config
+.env
+=======
 node_modules
 .env
 auth.md
+>>>>>>> 7c6b0384cc8b812e40c42ae37eb0f712ebf1c254

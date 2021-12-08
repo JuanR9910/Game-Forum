@@ -4,23 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Review Forum</title>
+    <title>Review Page</title>
 </head>
 <body>
-    <h1>Welcome!</h1>
-   
-    <h4>Most anticipated games</h4>
-        <ul>
+    <h1>Game Review</h1>
+    <h2>What Users think</h2>
+    <h3>What Critics think</h3>
+    <h4>Comments</h4>
+     <ul>
         <% gameData.forEach((game)=>{ %>
             <li>
-                <img id= "gameimageA" src="<%= game.background_image %>" alt="">
+                <img id= "gameimageA" src="<%= game.background_name %>" alt="">
                 <%= game.name %>
             </li>
        <% }) %> 
-       </ul>
+       </ul> 
        <form id="form"> 
         <input type="search">
         <button>Search</button>
-      </form>
+        </form>
 </body>
 </html>
