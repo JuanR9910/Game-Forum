@@ -1,5 +1,3 @@
-
-   
 const passport = require('passport')
 const db = require('../models')
 const LocalStrategy = require('passport-local')

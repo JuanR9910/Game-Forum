@@ -7,8 +7,13 @@ app.get('/', (req, res)=>{
 })
 
 app.get('/review', (req, res)=>{
-    res.render('review.ejs')
-})
+        axios.get(`https://api.rawg.io/api/games/:id?key=${process.env.RAWG_API_KEY}`)
+        .then(apiRes => {
+            console.log('this is apiRes', apiRes.data)
+          const gameData = apiRes.data.results 
+           res.render('review.ejs')
+       })
+   })
 
 
 

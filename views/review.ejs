@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../middleware/public/style.css">
     <title>Review Page</title>
 </head>
 <body>
@@ -14,7 +15,7 @@
      <ul>
         <% gameData.forEach((game)=>{ %>
             <li>
-                <img id= "gameimageA" src="<%= game.background_name %>" alt="">
+                <a href="<%= game.background_id %>"></a>
                 <%= game.name %>
             </li>
        <% }) %> 

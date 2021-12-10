@@ -8,9 +8,10 @@ const flash = require('connect-flash')
 const isLoggedIn = require('./middleware/isLoggedIn')
 const axios = require('axios')
 
+
 // views (ejs and layouts) set up
 app.set('view engine', 'ejs')
-app.use(ejsLayouts)
+ app.use(ejsLayouts)
 
 // body parser middelware
 app.use(express.urlencoded({extended:false}))
