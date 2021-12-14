@@ -56,6 +56,7 @@ app.get('/about', (req, res)=> {
 })
 
 app.get('/review', (req, res)=> {
+    //  res.send("You've reached the review route!")
      axios.get(`https://api.rawg.io/api/games?key=${process.env.RAWG_API_KEY}`)
      .then(apiRes => {
          console.log('this is apiRes', apiRes.data)
