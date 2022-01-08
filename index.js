@@ -7,6 +7,7 @@ const passport = require('./config/ppConfig')
 const flash = require('connect-flash')
 const isLoggedIn = require('./middleware/isLoggedIn')
 const axios = require('axios')
+const router = express.Router()
 
 // views (ejs and layouts) set up
 app.set('view engine', 'ejs')
@@ -28,7 +29,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 // flash middleware (must go AFTER session middleware)
-app.use(flash())
+ app.use(flash())
 
 // custom middleware
 app.use((req, res, next) => {
@@ -40,7 +41,7 @@ app.use((req, res, next) => {
 
 // controllers middleware 
 app.use('/auth', require('./controllers/auth'))
-app.use('/review', require('./controllers/review'))
+//  app.use('/review', require('./controllers/review'))
 
 // home route
 app.get('/', (req, res)=>{
