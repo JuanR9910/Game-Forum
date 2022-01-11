@@ -4,10 +4,14 @@ const db = require('../models')
 const passport = require('../config/ppConfig.js')
 
 router.get('/signup', (req, res)=>{
+    console.log(db.comment)
     res.render('auth/signup')
 })
 
 router.post('/signup', (req, res)=>{
+    console.log(req.body.email)
+    console.log(req.body.name)
+    console.log(req.body.password)
     db.user.findOrCreate({
         where: {email: req.body.email},
         defaults: {
@@ -22,7 +26,8 @@ router.post('/signup', (req, res)=>{
             passport.authenticate('local', {
                 successRedirect: '/', // !-> FLASH <-!
                 successFlash: 'Account created and logged in!'
-            })(req, res) // why does this need to be an IIFE???
+            }) // why does this need to be an IIFE???
+            (req, res)
         } else { // !-> FLASH <-!
             req.flash('error', 'email already exists, try logging in') 
             // console.log('An account associated with that email address already exists! Did you mean to login?')

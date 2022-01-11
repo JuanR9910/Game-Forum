@@ -24,3 +24,5 @@ module.exports = (sequelize, DataTypes) => {
   });
   return comment;
 };
+
+// Find a way to display comments on review page

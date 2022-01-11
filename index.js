@@ -12,10 +12,10 @@ const router = express.Router()
 // views (ejs and layouts) set up
 app.set('view engine', 'ejs')
  app.use(ejsLayouts)
-
 // body parser middelware
 app.use(express.urlencoded({extended:false}))
-app.use(express.static('public'))
+// Used dirname so that all the sites assets can be used with css //
+app.use(express.static(__dirname + '/public'));
 
 // session middleware
 app.use(session({
