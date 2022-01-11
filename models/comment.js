@@ -26,3 +26,4 @@ module.exports = (sequelize, DataTypes) => {
 };
 
 // Find a way to display comments on review page
+// Create POST, PUT and DELETE routes for users to create edit and delete comments //
