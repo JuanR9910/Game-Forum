@@ -1,34 +1,40 @@
+require("dotenv").config()
 const { render } = require("ejs");
 const db = require("../models");
-const router = require("./igdb");
+const express = require("express")
+const router = express.Router();
+const axios = require('axios')
 
 //POST route - making user post a review under a game
-router.post('/', (req, res) => {
-   db.user.create({
-     content: req.body.content,
-     userId: req.body.userId
-   })
-   .then((post) => {
-     res.redirect('/views/review')
-   })
-   .catch((error) => {
-     res.status(400).render('main/404')
-   })
- })
+// router.post('/', (req, res) => {
+//    db.user.create({
+//      content: req.body.content,
+//      userId: req.body.userId
+//    })
+//    .then((post) => {
+//      res.redirect('/views/review')
+//    })
+//    .catch((error) => {
+//      res.status(400).render('main/404')
+//    })
+//  })
+
+
  // GET route
- router.get('/:id', (req, res) => {
-    //  res.send("You've reached the review route!")
-    console.log(req.params.id)
-     axios.get(`https://api.rawg.io/api/${req.params.id}?key=${process.env.RAWG_API_KEY}`)
+router.get('/:name', (req, res) => {
+     axios.get(`https://rawg.io/api/games?key=${process.env.RAWG_API_KEY}&search=${req.params.name}`)
      .then(apiRes => {
          console.log('this is apiRes', apiRes.data)
-       const gameData = apiRes.data.results 
-        res.render('review.ejs')
+       const gameData = apiRes.data.results
+       console.log(gameData)
+      res.render('review.ejs', {gameData:gameData})
+    })
+      .catch((error) => {
+        res.status(400).render('main404')
     })
   })
-   .catch((error) => {
-     res.status(400).render('main/404')
-   })
+   
+  
 
 // router.get('/:id', (req, res) => {
 //     db.user.findOne({
@@ -47,3 +53,4 @@ router.post('/', (req, res) => {
 
 // Create other routes for the review page
 
+module.exports = router;

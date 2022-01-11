@@ -19,7 +19,7 @@
          <% gameData.forEach((game)=>{ %>
             <li>
                 <img id="gameimageA" src="<%= game.background_image %>" alt="">
-                <a href="/review/<%= game.id %>"> 
+                <a href="/review/<%= game.name%>"> 
                  <%= game.name %></a>
              </li>
        <% }) %> 

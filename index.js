@@ -41,10 +41,11 @@ app.use((req, res, next) => {
 
 // controllers middleware 
 app.use('/auth', require('./controllers/auth'))
-//  app.use('/review', require('./controllers/review'))
+  app.use('/review', require('./controllers/review'))
 
 // home route
 app.get('/', (req, res)=>{
+    console.log("games")
     axios.get(`https://api.rawg.io/api/games?key=${process.env.RAWG_API_KEY}`)
     .then(apiRes => {
         console.log('this is apiRes', apiRes.data)
@@ -57,15 +58,15 @@ app.get('/about', (req, res)=> {
     res.render('about.ejs')
 })
 
-app.get('/review', (req, res)=> {
-    //  res.send("You've reached the review route!")
-     axios.get(`https://api.rawg.io/api/games?key=${process.env.RAWG_API_KEY}`)
-     .then(apiRes => {
-         console.log('this is apiRes', apiRes.data)
-       const gameData = apiRes.data.results 
-        res.render('review.ejs')
-    })
-})
+// app.get('/review', (req, res)=> {
+//     //  res.send("You've reached the review route!")
+//      axios.get(`https://api.rawg.io/api/games?key=${process.env.RAWG_API_KEY}`)
+//      .then(apiRes => {
+//          console.log('this is apiRes', apiRes.data)
+//        const gameData = apiRes.data.results 
+//         res.render('review.ejs')
+//     })
+// })
 
 
 // profile route
