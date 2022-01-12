@@ -6,35 +6,63 @@ const router = express.Router();
 const axios = require('axios')
 
 //POST route - making user post a review under a game
-// router.post('/', (req, res) => {
-//    db.user.create({
-//      content: req.body.content,
-//      userId: req.body.userId
-//    })
-//    .then((post) => {
-//      res.redirect('/views/review')
-//    })
-//    .catch((error) => {
-//      res.status(400).render('main/404')
-//    })
-//  })
+ router.post('/review.ejs', (req, res) => {
+   db.user.create({
+     gameid: req.body.gameid,
+    content: req.body.content,
+     userId: req.body.userId
+    })
+  .then((post) => {
+     res.redirect('/views/review')
+   })
+   .catch((error) => {
+     res.status(400).render('main/404')
+   })
+  })
 
 
  // GET route
-router.get('/:name', (req, res) => {
-     axios.get(`https://rawg.io/api/games?key=${process.env.RAWG_API_KEY}&search=${req.params.name}`)
+router.get('/:id', (req, res) => {
+     axios.get(`https://rawg.io/api/games/${req.params.id}?key=${process.env.RAWG_API_KEY}`)
      .then(apiRes => {
          console.log('this is apiRes', apiRes.data)
-       const gameData = apiRes.data.results
-       console.log(gameData)
-      res.render('review.ejs', {gameData:gameData})
+       const gameData = apiRes.data
+       console.log("THIS IS OUR CONSOLE LOG", gameData)
+        res.render('review.ejs', {gameData:gameData})
     })
       .catch((error) => {
         res.status(400).render('main404')
     })
   })
    
-  
+  router.put('/review.ejs',(req, res) => {
+  db.user.put({
+    gameid: req.body.title,
+    content: req.body.content,
+    userid: req.body.userid
+  })
+  .then((put) => {
+    res.redirect('/review.ejs')
+  })
+  .catch((error) => {
+    res.status(400).render('main/404')
+  })
+  })
+
+
+  router.delete('/review.ejs', (req, res) => {
+    db.user.delete({
+      gameid: req.body.title,
+      content: req.body.content,
+      userid: req.body.userid
+    })
+    .then((delete) => {
+      res.redirect('/review.ejs')
+    })
+    .catch((error) => {
+      res.status(400).render('main/404')
+    })
+  })
 
 // router.get('/:id', (req, res) => {
 //     db.user.findOne({

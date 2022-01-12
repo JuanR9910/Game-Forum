@@ -16,6 +16,15 @@ body {
     display: flex;
 }
 
+#gameimageB {
+    font-family: 'Press Start 2P';
+    border: 10px solid black;
+    width: 30%;
+    height: 40%;
+    display: flex;
+}
+
+
 #form {
     position: absolute;
     top: 12%;
@@ -23,6 +32,12 @@ body {
 
 
 #FindG {
+    font-family: 'Press Start 2P', cursive;
+    background-color: black;
+    color: white;
+}
+
+#FindE {
     font-family: 'Press Start 2P', cursive;
     background-color: black;
     color: white;
@@ -42,4 +57,20 @@ body {
 
 h4 {
     text-align: center;
+}
+
+#Rheading1 {
+    text-align: center;
+}
+
+#Rheading2 {
+    text-align: center;
+}
+
+#Rheading3 {
+    text-align: center;
+}
+
+#Rheading4 {
+    text-align: left;
 }

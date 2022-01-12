@@ -4,27 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
+
     <title>Review Page</title>
 </head>
 <body>
-    <h1>Game Review</h1>
-    <h2>What Users think</h2>
-    <h3>What Critics think</h3>
-    <h4>Comments</h4>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        </style>
+    <h1 id= "Rheading1">Game Review</h1>
+    <h2 id = "Rheading2">What Users think</h2>
+    <h3 id = "Rheading3">What Critics think</h3>
      <ul>
-         <% gameData.forEach((game)=>{ %>
             <li>
-                <a href="<%= game.background_id %>">
-                <%= game.name %> </a>
+                <img id= "gameimageB" src="<%= gameData.background_image%>">
+                <%= gameData.name %>
                 <!-- Need to debug gameData is not defined error -->
             </li>
-       <% }) %> 
        </ul> 
        <form id="form"> 
         <input type="search">
         <!-- Create ID for Search button and use code to be able for user to search through the page for games to review -->
-        <button>Search</button>
+        <button id= "FindE">Search</button>
+        </form>
+        <form>
+            <h4 id = "Rheading4">Comments</h4>
+           <label for="user"></label>
+            <input type="text" class="comments">
+            <button id="FindR">Submit</button>
         </form>
 </body>
 </html>
