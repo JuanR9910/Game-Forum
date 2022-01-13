@@ -27,11 +27,12 @@
         <!-- Create ID for Search button and use code to be able for user to search through the page for games to review -->
         <button id= "FindE">Search</button>
         </form>
-        <form>
+        <form action="/review/<%= gameData.id %>" method="POST">
             <h4 id = "Rheading4">Comments</h4>
            <label for="user"></label>
-            <input type="text" class="comments">
-            <button id="FindR">Submit</button>
+            <input name="content" type="text" class="comments">
+            <input id="FindR" type="Submit">
         </form>
+    
 </body>
 </html>

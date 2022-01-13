@@ -5,64 +5,78 @@ const express = require("express")
 const router = express.Router();
 const axios = require('axios')
 
-//POST route - making user post a review under a game
- router.post('/review.ejs', (req, res) => {
-   db.user.create({
-     gameid: req.body.gameid,
-    content: req.body.content,
-     userId: req.body.userId
-    })
-  .then((post) => {
-     res.redirect('/views/review')
-   })
-   .catch((error) => {
-     res.status(400).render('main/404')
-   })
-  })
-
-
  // GET route
 router.get('/:id', (req, res) => {
      axios.get(`https://rawg.io/api/games/${req.params.id}?key=${process.env.RAWG_API_KEY}`)
      .then(apiRes => {
          console.log('this is apiRes', apiRes.data)
        const gameData = apiRes.data
-       console.log("THIS IS OUR CONSOLE LOG", gameData)
-        res.render('review.ejs', {gameData:gameData})
-    })
+       return gameData
+      })
+      .then((game)=> {
+        console.log("This is gameData", game.id)
+        db.comment.findAll({
+          where: {gameId:game.id}
+      })
+       })
+        .then(dbRes => {
+          console.log(dbRes)
+          console.log("THIS IS OUR CONSOLE LOG", gameData)
+          res.render('review.ejs', {gameData:gameData})
+        })
+
       .catch((error) => {
         res.status(400).render('main404')
     })
+  }) 
+//POST route - making user post a review under a game
+router.post('/:id', (req, res) => {
+    // res.send("We've hit the POST route!")
+    
+   const gameId = req.params.id
+  const user = res.locals.currentUser
+   console.log(gameId)
+   console.log(req.body.content)
+   console.log(res.locals.currentUser)
+     db.comment.create({
+       gameId: gameId,
+     content: req.body.content,
+       userId: user.id
+      })
+    .then((post) => {
+       res.redirect(`/review/${gameId}`)
+     })
+     .catch((error) => {
+       res.status(400)
+    })
   })
-   
-  router.put('/review.ejs',(req, res) => {
-  db.user.put({
-    gameid: req.body.title,
-    content: req.body.content,
-    userid: req.body.userid
-  })
-  .then((put) => {
-    res.redirect('/review.ejs')
-  })
-  .catch((error) => {
-    res.status(400).render('main/404')
-  })
-  })
+// PUT route
+  // router.put('/:id',(req, res) => {
+  // db.user.put({
+  //   gameid: req.body.title,
+  //   content: req.body.content,
+  //   userid: req.body.userid
+  // })
+  // .then((put) => {
+  //   res.redirect('/review.ejs')
+  // })
+  // .catch((error) => {
+  //   res.status(400)
+  // })
+  // })
 
-
-  router.delete('/review.ejs', (req, res) => {
-    db.user.delete({
-      gameid: req.body.title,
-      content: req.body.content,
-      userid: req.body.userid
-    })
-    .then((delete) => {
-      res.redirect('/review.ejs')
-    })
-    .catch((error) => {
-      res.status(400).render('main/404')
-    })
-  })
+// DELETE route
+  // router.delete('/:id', (req, res) => {
+  //   db.comment.delete({
+  //     id: req.body.comment.id
+  //   })
+  //   .then((delete) => {
+  //     res.redirect('/review.ejs')
+  //   })
+  //   .catch((error) => {
+  //     res.status(400)
+  //   })
+  // })
 
 // router.get('/:id', (req, res) => {
 //     db.user.findOne({

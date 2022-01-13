@@ -23,7 +23,7 @@ With this database I will be able to pull data from it to render my comments, ga
 My MVP Goals will be to create an app with basic functionality such as being able to create an account to access the apps features, having the user be able to search for the game they desire to comment on. 
 Have the user be able to post, edit or delete their own comments they want, this will require me to create GET, POST, PUT, DELETE routes for the comments controllers with javascript.
  Have the games come with clickable links that will redirect the user to the review page where they can talk about the game they want however they please. 
-Finally have a profile page where the user can have their own list of games that they love as well as letting the user favorite the games they want in the review page and that game they favorited will be redirected to their profile page and added to their list. 
+Finally have a profile page where the user can have their own list of games. 
 
 
 My Stretch Goal for the end of this is to well....make another project lol. Work in progress......
