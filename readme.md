@@ -29,3 +29,25 @@ Finally have a profile page where the user can have their own list of games.
 My Stretch Goal for the end of this is to well....make another project lol. Work in progress......
 
 
+
+My project speech:
+
+My project is a game FORUM that will allow the user to basically search up a game that they would like to talk about and comment on them. I used the Tech Stack Express, EJS, and Node. And to make my database I used Postgressql.  Just say u just got done playing a game and you're like "WOW...that game was fun ya know I wanna fanboy and talk about this game with someone but I'ma loser and I don't have any friends" or you're like "WOW...THAT GAME WAS TRASH I need to save the future generation and prevent them from spending their valueable 60 American Dollars on this terrible product!" That's what my project is for. So here's the home page layout, here we have the a layout list of random games people have played before, now first to use my app I would want the user to make an account first obviously so we go to the signup page and make an account or if you already have one then login. So now you can go ahead and try out my product. So basically what I wanted the user to do was that they can click on one of these games like "hey I've played this game before! I wanna talk about it" so u click on on the names and u get redirected to the review page where I would like the user to be able to post a comment under their game and if they don't like it they would be able to delete it or edit that comment. And they wouldn't even have to click the link they could potentially search for any game they want to talk about and it would also redirect them to the review page where the game they search will show up and comment under that game as well. Also the API I am using is the IGDB Video Game Database API which the title kinda explains itself, it gives me a database of games to pull from which is what I used to display my games on the homepage here. So here's the code, my index.js this is my home route the basis of operations, my about route which was scrapped due to time contraints but the original idea was that the user would search up a game and the game would pop up with an about link which will send them to the about page to know what the game is they interested in is about like the platforms it's on, who made it, how it's played etc. My results for the search bar, helps the users search for a game they desire and be brought to that page for the game. Mainly, my review.js ended up being my MEAT of the project because this is pretty much what everyone is gonna be doing on here, commenting and talking shit about games pretty much. My favorite line of code was Promise.all() I still lack the knowledge of knowing what it does(will need more practice) but from my definition it takes multiple promises, puts them into an array and the result is essently a super promise. Obviously, I coded it out cause when you're me you find 1 solution and u get 3 more problems but that's ok.
+
+
+
+Biggest Win: Review.js Routes and overall learning experience. 
+
+What I could improve on: 
+Fixing the issues with my GET route and finishing the PUT and DELETE routes.
+CSS the rest of my pages
+and finish my Profile page.
+HITTING MVP
+
+
+
+Installation Instructions: 
+Fork and Clone REPO
+Run Nodemon or NPM I first if you don't have Nodemon
+
+

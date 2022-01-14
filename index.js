@@ -15,7 +15,7 @@ app.set('view engine', 'ejs')
 // body parser middelware
 app.use(express.urlencoded({extended:false}))
 // Used dirname so that all the sites assets can be used with css //
-app.use(express.static(__dirname + '/public'));
+ app.use(express.static(__dirname + '/public'));
 
 // session middleware
 app.use(session({
@@ -48,14 +48,21 @@ app.get('/', (req, res)=>{
     console.log("games")
     axios.get(`https://api.rawg.io/api/games?key=${process.env.RAWG_API_KEY}`)
     .then(apiRes => {
-        console.log('this is apiRes', apiRes.data)
+        // console.log('this is apiRes', apiRes.data)
         const gameData = apiRes.data.results 
         res.render('home.ejs', {gameData:gameData})
     })
 })
 
-app.get('/about', (req, res)=> {
-    res.render('about.ejs')
+app.get('/results', (req, res)=> {
+    console.log("This is the search query", req.query.name)
+    axios.get(`https://rawg.io/api/games?key=${process.env.RAWG_KEY}&search=${req.body.name}`)
+    .then(apiRes => {
+        console.log('this is apiRes', apiRes.data)
+        const gameData = apiRes.data.results 
+        res.render('home.ejs', {gameData:gameData})
+    })
+    res.render('home.ejs')
 })
 
 // app.get('/review', (req, res)=> {

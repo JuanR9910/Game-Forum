@@ -5,30 +5,46 @@ const express = require("express")
 const router = express.Router();
 const axios = require('axios')
 
+
  // GET route
 router.get('/:id', (req, res) => {
-     axios.get(`https://rawg.io/api/games/${req.params.id}?key=${process.env.RAWG_API_KEY}`)
-     .then(apiRes => {
-         console.log('this is apiRes', apiRes.data)
-       const gameData = apiRes.data
-       return gameData
-      })
-      .then((game)=> {
-        console.log("This is gameData", game.id)
-        db.comment.findAll({
-          where: {gameId:game.id}
-      })
-       })
-        .then(dbRes => {
-          console.log(dbRes)
-          console.log("THIS IS OUR CONSOLE LOG", gameData)
-          res.render('review.ejs', {gameData:gameData})
+  // const promiseAxios = new Promise((resolve, reject) => {
+    console.log(req.params.id)
+    axios.get(`https://rawg.io/api/games/${req.params.id}?key=${process.env.RAWG_API_KEY}`)
+       .then(apiRes => {
+            //  console.log('this is apiRes', apiRes.data)
+          const gameData = apiRes.data
+            console.log(gameData)
+          db.comment.findAll({
+            where: {gameId:req.params.id}
+          })
+          .then((foundComments)=>{
+            console.log("cheese" ,foundComments)
+            res.render('review', {gameData:gameData, reviews:foundComments})
+          }).catch((error)=>{
+            console.log('problem finding comments')
+          })
+        }).catch((error)=>{
+          console.log('problem finding axios call')
         })
-
-      .catch((error) => {
-        res.status(400).render('main404')
-    })
-  }) 
+      // })
+  
+//   const promiseDatabase = new Promise((resolve, reject) => {
+//     const allComments = db.comment.findAll({
+//       where: {gameId:req.params.id}
+//   })
+//   resolve(allComments)
+//   })
+//  Promise.all([promiseAxios, promiseDatabase]).then((values)=>{
+//    const gameData = values[0]
+//    const reviews = values[1]
+//    console.log(reviews)
+//    res.render('review', {gameData:gameData, reviews:reviews})
+//  })
+//  .catch(console.error)
+})
+    
+  
 //POST route - making user post a review under a game
 router.post('/:id', (req, res) => {
     // res.send("We've hit the POST route!")
